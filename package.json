@@ -12,8 +12,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:old": "react-scripts start -o",
+    "start": "node ./esbuild/serve.js",
+    "build:file": "node ./esbuild/build.js",
+    "build": "esbuild src/index.js --bundle --outfile=build/js/app.js --loader:.js=jsx",
+    "build:old": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.29",
+    "esbuild-plugin-inline-image": "0.0.8"
   }
 }
