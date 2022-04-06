@@ -10,4 +10,9 @@ esbuild.build({
     ".js": "jsx",
   },
   plugins: [inlineImage()],
+  watch: {
+    onRebuild(err) {
+      console.log('watch', err);
+    }
+  }
 }).catch(() => process.exit(1));

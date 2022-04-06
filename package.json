@@ -12,13 +12,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start:old": "react-scripts start -o",
-    "start": "node ./esbuild/serve.js",
-    "build:file": "node ./esbuild/build.js",
+    "build:custom": "node ./esbuild/build.js",
     "build": "esbuild src/index.js --bundle --outfile=build/js/app.js --loader:.js=jsx",
-    "build:old": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start:custom": "node ./esbuild/serve.js",
+    "start:watch": "node ./esbuild/serve-live.js",
+    "start": "npm run build -- --servedir=build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "watch": "npm run build -- --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -39,7 +40,9 @@
     ]
   },
   "devDependencies": {
+    "create-serve": "^1.0.1",
     "esbuild": "^0.14.29",
-    "esbuild-plugin-inline-image": "0.0.8"
+    "esbuild-plugin-inline-image": "0.0.8",
+    "esbuild-serve": "^1.0.1"
   }
 }
